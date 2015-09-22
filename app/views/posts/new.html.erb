@@ -1,0 +1,21 @@
+
+  <div class="row">
+
+    <div class="col-sm-8 center-block">
+
+      <h2>Create Post</h2>
+
+      <%= form_for(:post, :url => {:action => 'create'},html:{ multipart: true, class: "form-horizontal"}) do |f| %>
+
+          <%= render(:partial => "form", :locals => {:f => f}) %>
+
+
+          <%= submit_tag("Create Block", class: "btn btn-default") %>
+
+
+      <% end %>
+
+    </div>
+
+  </div>
+

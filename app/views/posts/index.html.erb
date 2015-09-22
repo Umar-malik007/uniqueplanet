@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-7">
+    <% @posts.each do |post| %>
+        <div class="row ">
+
+
+          <div class="col-sm-12 pad block">
+            <div class="col-sm-4">
+
+              <%= image_tag post.image.url(:thumb), class: "img-circle img-responsive tpad center-block" %>
+
+            </div>
+            <div class="col-sm-8">
+              <h3 class = "post-box-title"><%=post.title%></h3>
+              <hr>
+              <p><%= truncate(post.content, length: 200) %></p>
+              <hr>
+              <p><%= link_to("Read More...", {:controller => 'posts', :action => 'show', :id => post.permalink}, :class => "read-more btn btn-primary btn-sm")%>
+
+                <% if signed_in? %>
+                    <%= link_to("Edit", {:controller => 'posts', :action => 'edit', :id => post.permalink}, :class => "read-more btn btn-primary btn-sm")%>
+                    <%= link_to("Delete", {:controller => 'posts', :action => 'delete', :id => post.permalink}, :class => "read-more btn btn-primary btn-sm")%>
+                    <%= link_to("New Post", {:controller => 'posts', :action => 'new', :id => post.permalink}, :class => "read-more btn btn-success btn-sm")%>
+                    </p>
+                <% end %>
+                <hr>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="digg_pagination">
+      <div class="page_info">
+        <%= page_entries_info @posts %>
+      </div>
+      <%= will_paginate @posts, :container => false %>
+    </div>
+
+  </div>
+  <!----Side Bar ---->
+  <%= render(:partial => "sidebar") %>
+</div>
+
+
+
+
+
+
+

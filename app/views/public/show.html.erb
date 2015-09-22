@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7 blog">
+      <section>
+        <h1><%=@app.title%></h1>
+        <p><span class="glyphicon glyphicon-time"></span><%=time_ago_in_words(@app.created_at)%></p>
+        <hr>
+        <%= image_tag @app.image.url(:medium), class: "thumbnail img-responsive tpad" %>
+        <hr>
+        <% if @app.content %>
+            <p><%= @app.content %></p>
+            <hr>
+        <% end %>
+
+        <% if @app.yUrl == "none" %>
+            <p class="lead">NO video for this post!!!</p>
+        <%else%>
+            <div class="embed-container">
+              <%= embed(@app.yUrl) %>
+            </div>
+        <% end %>
+
+
+        <hr>
+
+
+        <p><%= link_to("Download Now", "#", :class => "read-more btn btn-primary btn-large")%></p>
+        <hr>
+      </section>
+    </div>
+
+    <!----Side Bar ---->
+    <%= render(:partial => "sidebar") %>
+
+  </div>
+</div>

@@ -1,0 +1,78 @@
+
+<div class="form-group">
+  <%= f.label(:title) %>
+  <%= f.text_field(:title,:class => "form-control") %>
+</div>
+
+<div class="form-group">
+  <%= f.label(:keywords) %>
+  <%= f.text_field(:keywords,:class => "form-control") %>
+</div>
+
+<div class="form-group">
+  <%=f.label(:position)%>
+  <%=f.select(:position, 1..@app_count, {},{:class => "form-control"}) %>
+</div>
+
+<div class="check-box">
+  <%=f.check_box(:visible)%>  <%=f.label(" visible?")%>
+</div>
+
+<div class="form-group">
+  <%=f.label(:category)%> <br>
+  <div class="radio-inline">
+    <label>
+      <%= f.radio_button(:category, 'arcade')%> Arcade
+    </label>
+  </div>
+
+  <div class="radio-inline">
+    <label>
+      <%= f.radio_button(:category, 'action')%> Action
+    </label>
+  </div>
+
+  <div class="radio-inline">
+    <label>
+      <%= f.radio_button(:category, 'edu')%> Educational
+    </label>
+  </div>
+
+  <div class="radio-inline">
+    <label>
+      <%= f.radio_button(:category, 'horror')%> Horror
+    </label>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <%= f.label(:content) %> <br>
+  <%= f.text_area(:content, class: "form-control","rows" => 10) %>
+</div>
+
+
+<div class="form-group">
+  <%= f.file_field(:image) %>
+</div>
+
+<div class="form-group">
+  <%= f.label("Youtube's Video Url:") %>
+  <%= f.text_field(:yUrl, class: "form-control") %>
+</div>
+
+<div class="form-group">
+  <%= f.label("DailyMotion's Video Url:") %>
+  <%= f.text_field(:dUrl, class: "form-control") %>
+</div>
+
+<div class="form-group">
+  <%= f.label("Download Link:") %>
+  <%= f.text_field(:down_link, class: "form-control") %>
+</div>
+
+
+
+
+
+

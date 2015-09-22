@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7 blog">
+      <section>
+        <h1><%=@post.title%></h1>
+        <p><span class="glyphicon glyphicon-time"></span><%=time_ago_in_words(@post.created_at)%></p>
+        <hr>
+        <%= image_tag @post.image.url(:medium), class: "thumbnail img-responsive tpad" %>
+        <hr>
+        <% if @post.content %>
+            <p><%= @post.content %></p>
+            <hr>
+        <% end %>
+
+        <ul id="myTab" class="nav nav-tabs">
+          <li class="active"><%= link_to 'Daily Motion', '#dailymotion', {'data-toggle' => 'tab'}%></li>
+          <li><%= link_to 'Youtube', '#youtube', {'data-toggle' => 'tab'}%></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fad in active" id="dailymotion">
+            <% if @post.dUrl == "none" %>
+                <p class="lead">No video for this post!!!</p>
+            <%else%>
+                <div class="embed-container">
+                  <%= embed(@post.dUrl) %>
+                </div>
+            <% end %>
+          </div>
+
+          <div class="tab-pane fad in" id="youtube">
+            <% if @post.yUrl == "none" %>
+                <p class="lead">No video for this post!!!</p>
+            <%else%>
+                <div class="embed-container">
+                  <%= embed(@post.yUrl) %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+
+
+
+
+
+        <hr>
+
+
+        <p>
+          <% if signed_in? %>
+          <%= link_to("Edit", {:controller => 'posts', :action => 'edit', :id => @post.id}, :class => "read-more btn btn-primary btn-sm")%>
+          <%= link_to("Delete", {:controller => 'posts', :action => 'delete', :id => @post.id}, :class => "read-more btn btn-primary btn-sm") %>
+          <% end %>
+        </p>
+        <hr>
+      </section>
+    </div>
+
+    <!----Side Bar ---->
+    <%= render(:partial => "sidebar") %>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'crescent007';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  </div>
+</div>

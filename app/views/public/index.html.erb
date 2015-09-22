@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-7">
+    <% @combo.each do |app| %>
+        <div class="row ">
+
+
+          <div class="col-md-12 pad block">
+            <div class="col-md-4">
+
+              <%= image_tag app.image.url(:thumb), class: "img-circle img-responsive tpad center-block" %>
+
+            </div>
+            <div class="col-md-8">
+              <h2 class = "post-box-title"><%=app.title%></h2>
+              <hr>
+              <p class="intro-p"><%= truncate(app.content, length: 200) %></p>
+              <hr>
+              <% if app.content_type == "app" %>
+                  <p><%= link_to("Read More...", {:controller => 'apps', :action => 'show', :id => app.permalink}, :class => "read-more btn btn-primary btn-sm")%></p>
+              <% else %>
+                  <p><%= link_to("Read More...", {:controller => 'posts', :action => 'show', :id => app.permalink}, :class => "read-more btn btn-primary btn-sm")%></p>
+              <% end %>
+              <hr>
+            </div>
+          </div>
+        </div>
+
+    <% end %>
+
+
+  </div>
+  <!----Side Bar ---->
+  <%= render(:partial => "sidebar") %>
+</div>
+
+
+
+
+
+
+

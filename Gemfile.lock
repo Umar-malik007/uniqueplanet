@@ -91,6 +91,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pg (0.18.2-x64-mingw32)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -170,6 +171,7 @@ DEPENDENCIES
   meta-tags
   mysql2 (~> 0.3.20)
   paperclip (~> 4.3.0)
+  pg
   rails (= 4.2.4.rc1)
   rake (~> 10.4.2)
   sass-rails (~> 5.0)
